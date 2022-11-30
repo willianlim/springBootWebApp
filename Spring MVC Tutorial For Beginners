@@ -1,0 +1,307 @@
+Yesterday's topic: MVC Architecture
+
+Today's topic: Spring MVC Introduction
+--------------------------------------
+-> MVC Stands for Model View Controller
+
+-> MVC is an architectural design pattern
+
+-> Using MVC design pattern, we can develop our applications with loosely coupling
+
+-> In our applications we will have below layers
+	
+	1) Presentaion Layer (UI)
+	2) Web Layer (Req & Req Handling)
+	3) Business Layer (Service / Layer)
+	4) Persistence Layer (DB Acess Logic)
+
+
+What is Spring MVC?
+-------------------
+-> Spring Framework developed in modular fashion
+
+-> Spring MVC is one of the module in Spring Framework
+
+-> Spring MVC is designed based on MVC architecture
+
+
+What we can do using Spring MVC?
+--------------------------------
+Using Spring MVC we can develop below 2 types of applications
+
+	1) Web applications (Customer to business)
+	2) Distributed application (business to business)
+
+	
+What is Web application?
+------------------------
+-> The application which are accessing from browser that application can be 
+called as web application
+
+-> For Web applications User Inteface will be available
+
+-> Web applications provides Customer to Business communication
+
+Ex: Facebook, Gmail, IRCTC, SBI Netbanking, etc ...
+
+
+What is Distributed Application?
+--------------------------------
+-> The application which is interacting with another applications is called as
+Distributed application
+
+-> To reuse existing business services on project will iteract with another
+project
+
+-> To develop distributed applications we will use Webservices
+	
+	1) SOAP Based Webservices
+	2) RESTful Services
+	
+-> Using these web services we can develop Business to Business communication
+based application.
+
+-> For Webservices user inteface will not be available.
+
+Note: In Web applications we can use webservices.
+
+-> Web Services will provide Interoperability (Irrespective of the platform and
+Irrespective of language projects can communicate)
+
+
+What are the advantages of Spring MVC?
+--------------------------------------
+1) In Spring MVC, components roles are clearly seperated
+	(DS, Controller, HandlerMapper, ViewResolver)
+
+2) In Web applications development we can avoid boilerplate code (boilerplate
+code, or simply boilerplate, are sections of code that are repeated in multiple
+places with little to no variation.)
+
+3) Form Binding Support (Form data can be binded to object to object and
+vice versa) - 2 way binding
+
+4) Spring MVC provided flexibility in form binding
+
+5) Spring MVC supports for multiple View Technologies
+
+6) Spring MVC supports for Internationalization (I 18 N) based applications.
+
+
+
+
+Todays' Session:-
+-----------------
+Spring MVC Components
+Spring MVC Architecture
+Request execution flow in Spring MVC application
+
+
+Spring MVC Components
+---------------------
+1) Front Controller (DispatcherServelet)
+2) Handler Mapper
+3) Controller
+4) ModelAndView
+5) ViewResolver
+6) View
+
+-> Spring MVC module is part of Spring framework
+
+-> In Spring 1.x version we have Spring MVC and Spring Web MVC modules
+
+-> Spring 2.x version web module and mvc module are combined and released
+Spring Web MVC module
+
+-> Spring MVC module is used to develop below types of applications
+
+	a) Web application
+	b) Distributed applications
+
+-> This Spring Web MVC module is developed based on 2 design patterns
+	
+	a) MVC Design Pattern
+	b) Front Controller Design Pattern. 
+
+
+FrontController
+---------------
+-> FrontController is reponsible to perform pre-processing and post processing
+of incoming request
+
+-> Form example capturing form data we can consider as pre-processing request
+
+-> For example sending response back to client in client understandable form
+be called as Post Processing of request.
+
+-> In Spring Web MVC based application we will use DispatcherServlet as a front
+controller
+
+-> DispatcherServlet is a pre-defined servlet provided by Spring MVC module
+
+-> Dispatcher will be called Spring framework Servlet
+
+
+Handler Mapper
+--------------
+-> Handler Mapper is a pre-defined class avaible in Spring MVC
+
+-> Handler Mapper is responssible to identify request handler (controller)
+
+-> The program which is handling incoming request is called as Request Handler
+
+-> Controllers will be called as request handlers
+
+-> Handler Mapper will identify request handler and returns handler details to
+DispatcherServlet
+
+
+Controller
+----------
+-> Controller is a program which is responsible to handle request
+
+-> In Spring MVC module we can create our own Controllers
+
+-> In Spring MVC some predefined controller classes are available like below
+	
+	a) SimpleFormController
+	b) AbstractCommandController
+	c) MultiActionController
+	etc ...
+	
+-> We can create User define controller using @Controller annotation
+
+
+ModelAndView
+------------
+-> Once Request processing is completed Controller will return ModelnAndView
+object to DispatcherServlet
+
+-> ModelAndView is a pre-defined class available in Spring MVC module
+
+-> In ModelAndView class, model represents data and view represents logical
+view name
+	
+	Model -----> Holds Data
+	
+	View ------> Logical View File name
+
+
+View Resolver
+-------------
+-> In Spring MVC we have multiple view resolver classes
+
+	a) InternalResourceViewResolver
+	b) URLBasedViewResolver
+	c) XmlViewResolver
+	etc ...
+	
+-> These view resolvers are responsible to identify view files
+(location & extension)
+
+
+View Component
+--------------
+-> It is responsible to render model data on view file
+
+
+Request Execution Flow In Spring MVC Application
+------------------------------------------------
+1) Incoming Http Request will be receieved by DispatcherServlet. Ds is predefined
+Servlet class in  Spring MVC and it is acting as Front Controller.
+
+2) DispatcherServlet will send requested URL to HandlerMapper.
+
+3) HandlerMapper will identify request handler which is responsible to handle
+this request and will send request handler details to DispatcherServlet.
+
+4) DispatcherServlet will call respective Controller class method
+
+5) Controller method will process request and will send ModelAndView object to
+DispatcherServlet
+
+	Model ---> Data
+	
+	View ----> Logical File Name
+
+6) DispatcherServlet will send view name to ViewResolver
+
+7) ViewResolver will identify view location & extension and sends data to
+DispatcherServlet
+
+8) DispatcherServlet will give model and view details to View Component
+
+9) Model data will be rendered on view sends back to DispatcherServlet
+
+10) DipatcherServlet will send response back for the recieved request
+
+
+
+Today's session: Developing web app using Boot
+
+Procedure to develop web app using SpringBoot
+---------------------------------------------
+1) Create Spring Starter project in STS IDE
+
+2) Choose below dependencies while creating boot application
+	
+	a) spring-boot-starter-web
+	b) tomcat-embed-jasper
+	
+	-> spring-boot-starter-web providing below 3 functionalities
+		a) Support to build web app based on Spring MVC
+		b) Support to build RESTful service
+		c) Provides Tomcat as Embedded Container
+		
+	-> It is used to compile jsp files(we don't add it view will be downloaded
+	 instead of rendering)
+
+3) Create User-defined Spring Controller class, write required methods in
+controller class and bind those controller methods to url patterns
+
+	a) @Controller (to represent java class as Spring Controller)
+	b) @RequestMapping (to bind method to url-pattern)
+
+Note: Controller methods are going to return ModelAndView objects
+	
+	Model ---> It is used to store data in the formof key & value pair
+	View ----> Logical View Name (only file name without extension)
+
+4) Create View Component and access data available in Model object using key
+
+5) Configure below datails in application.properties or application.yml file
+
+	a) Embedded Contaier Port
+	b) View Resolver
+	
+6) Run Spring Boot application from main method (Start class)
+
+7) Test our application functionality
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
